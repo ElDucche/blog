@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 
 const IndexPage = () => {
   return (
@@ -9,10 +10,7 @@ const IndexPage = () => {
           <br />
           <span className="text-3xl italic capitalize">I'm making this by following the Gatsby Tuto !</span>
         </h1>
-        <p className="">
-          Edit to see this page
-          update in real-time. 😎
-        </p>
+        <Link to="/about" className="text-2xl mt-4 p-2 rounded hover:bg-slate-900 hover:text-slate-50">About</Link>
       </section>
       
     </main>
