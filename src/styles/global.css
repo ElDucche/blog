@@ -4,6 +4,6 @@
 
 @layer components {
     .layout-link {
-        @apply p-2 m-3 hover:bg-slate-900 hover:text-slate-50 rounded-sm text-xl font-medium duration-100 ease-in
+        @apply p-2 m-3 hover:border-b-2 hover:border-b-slate-900 text-xl font-medium duration-100 ease-in;
     }
 }
