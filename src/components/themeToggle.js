@@ -1,27 +1,30 @@
 import * as React from 'react'
-import { useState } from 'react'
 // import { useEffect } from 'react'
-import { Switch } from '@headlessui/react'
+import useDarkMode from '../hook/useDarkMode'
 
 export default function ThemeToggle() {
-  const [enabled, setEnabled] = useState(false)
+    const [colorTheme, setTheme] = useDarkMode();
 
-  return (
-    <div className="py-8">
-      <Switch
-        checked={enabled}
-        onChange={setEnabled}
-        name="Dark mode"
-        className={`${enabled ? 'bg-slate-700' : 'bg-slate-500'}
-          relative inline-flex h-[21px] w-[37px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-      >
-        <span className="sr-only">Use setting</span>
-        <span
-          aria-hidden="true"
-          className={`${enabled ? 'translate-x-4' : 'translate-x-0'}
-            pointer-events-none inline-block h-[17px] w-[17px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
-        />
-      </Switch>
-    </div>
-  )
+    return (
+        <div>
+            <button onClick={() => setTheme(colorTheme)} className="transition duration-500">
+                {
+                    colorTheme === 'light' 
+                    
+                    ? 
+
+                    (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>)
+
+                    :
+
+                    (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                        <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clipRule="evenodd" />
+                    </svg>)
+                }
+            </button>
+            
+        </div>
+    )
 }

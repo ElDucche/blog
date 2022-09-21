@@ -13,9 +13,11 @@ const Layout = ({ pageTitle, children }) => {
         <ThemeToggle />
       </nav>
       <main className='p-0 m-0'>
-        <section className='grid content-center place-items-center h-screen'>
-            <h1 className='text-7xl font-bold'>{pageTitle}</h1>
-            {children}
+        <section className='grid grid-rows-4 place-items-center h-screen'>
+            <div className=' row-start-2 row-span-3'>
+                <h1 className='text-7xl font-bold'>{pageTitle}</h1>
+                {children}
+            </div>
         </section>
       </main>
     </div>
