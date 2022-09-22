@@ -6,9 +6,11 @@ export default function useDarkMode() {
     const colorTheme = theme === 'dark' ? 'light' : 'dark';
     useEffect(() => {
         const html = document.documentElement;
-
-        html.classList.remove(colorTheme);
-        html.classList.add(theme);
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add(theme);
+          } else {
+            html.classList.remove(colorTheme);
+          }   
         localStorage.setItem("theme", theme);
     }, [theme, colorTheme])
 
