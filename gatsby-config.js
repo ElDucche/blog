@@ -19,5 +19,12 @@ module.exports = {
         lowerTitleLevel: true,
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `blog`,
+        path: `${__dirname}/blog`,
+      }
+    },
   ],
 }
