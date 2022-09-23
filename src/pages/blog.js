@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 
 const BlogPage = ({data}) => {
     return(
-        <Layout pageTitle={"My Blog Posts"} >
+        <Layout pageTitle={"My Blog Posts"} image="https://i.postimg.cc/DfCWs0QX/bgBlog.jpg" >
             <section className='grid content-center place-items-center min-h-screen'>
                 <ul>
                     {
