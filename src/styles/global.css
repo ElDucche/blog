@@ -12,6 +12,6 @@
 
 @layer components {
     .layout-link {
-        @apply p-2 m-3 hover:border-b-2 hover:border-b-slate-900 dark:hover:border-b-slate-50 text-xl font-medium duration-100 ease-in;
+        @apply p-2 m-3 hover:border-b-2 hover:border-b-stone-900 dark:hover:border-b-stone-50 text-xl font-medium duration-100 ease-in;
     }
 }

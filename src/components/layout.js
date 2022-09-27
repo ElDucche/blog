@@ -12,7 +12,7 @@ const Layout = ({ pageTitle, children, image }) => {
         }
     }`)*/
   return (
-    <div className='text-gray-900 dark:text-gray-50 bg-gray-50 dark:bg-gray-900'>
+    <div className='text-stone-900 dark:text-stone-50 bg-stone-50 dark:bg-stone-900'>
         <Nav />
         <div className='p-0 m-0'>
             <div className='relative top-24'>
