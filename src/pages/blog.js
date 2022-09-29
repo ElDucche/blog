@@ -9,10 +9,12 @@ const BlogPage = ({data}) => {
             <section className='grid content-center place-items-center min-h-screen'>
                 <ul>
                     {
-                        data.allFile.nodes.map( node => (
-                            <li key={node.name}>
-                                {node.name}
-                            </li>
+                        data.allMdx.nodes.map((node) => (
+                        <article key={node.id} className="m-4 p-4 rounded border border-stone-900 dark:border-stone-50 dark:hover:shadow-[3px_3px_0_1px_rgba(250,250,249,0.2)] hover:shadow-[3px_3px_0_1px_rgba(0,0,0,0.2)] transition-all duration-200">
+                            <h2 className='text-3xl font-semibold'>{node.frontmatter.title}</h2>
+                            <p className='text-stone-400 font-light text-xs'>Posted: {node.frontmatter.date}</p>
+                            <p>{node.excerpt}</p>
+                        </article>
                         ))
                     }
                 </ul>
@@ -22,13 +24,18 @@ const BlogPage = ({data}) => {
 }
 
 export const query = graphql`
-    query {
-        allFile {
-            nodes {
-                name
-            }
+  query {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+      nodes {
+        frontmatter {
+          date(formatString: "D MMMM, YYYY")
+          title
         }
+        id
+        excerpt
+      }
     }
+  }
 `
 
 export const Head = () => <Seo title={"Blog"} />
