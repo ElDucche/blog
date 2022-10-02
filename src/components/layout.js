@@ -12,14 +12,15 @@ const Layout = ({ pageTitle, children, image }) => {
         }
     }`)*/
   return (
-    <div className='text-stone-900 dark:text-stone-50 bg-stone-50 dark:bg-stone-900'>
+    <div className='text-stone-900 dark:text-stone-50 bg-gradient-to-bl from-stone-50 to-stone-300 dark:from-stone-900 dark:to-stone-600'>
         <Nav />
         <div className='p-0 m-0'>
             <div className='relative top-24'>
-                <h1 className='text-6xl font-bold w-full text-center'>{pageTitle}</h1>
-                <div className=" h-64 w-full bg-fixed bg-cover" style={{backgroundImage: "url(" + image + ")"}}></div>
+                <h1 className='text-6xl font-bold w-full text-center underline underline-offset-8'>{pageTitle}</h1>
             </div>
+            <div className='mt-6'>
                 {children}
+            </div>
         </div>
     </div>
   )

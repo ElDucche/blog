@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bayon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap');
 
 @layer base {
     *{
-        font-family : 'Bayon', 'sans-serif';
+        font-family : 'Abyssinica SIL', 'sans-serif';
     } 
 }
 
