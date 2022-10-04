@@ -30,4 +30,7 @@
     .blogContent > ul {
         @apply pl-3 marker:text-zinc-700 list-disc dark:marker:text-zinc-400
     }
+    .blogContent > p > code {
+        @apply px-1 bg-black text-white dark:bg-white dark:text-black
+    }
 }
