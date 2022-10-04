@@ -1,7 +1,29 @@
 ---
-title: "Another Post"
-date: "2022-09-27"
-slug: "another-post"
+title: "Gatsby retour d'expérience"
+date: "2022-10-04"
+slug: "gatsby-experience"
 ---
 
-Here's another post! It's even better than the first one!
+## Le tutoriel
+
+De ce que j’ai pu retenir en pratiquant le tutoriel c’est que Gatsby permet de faire facilement son site. On peut implémenter assez spontanément des plugins qui sont simple d’utilisation et qui permettent de mieux comprendre le fonctionnement de React en général. J'ai quand même eu des bugs assez stridant qui m'ont forcé a me renseigner sur des concepts que je ne connaissais pas comme le Server-Side-Rendering pour l'utilisation de localStorage. Ou encore la découverte du format mdx. Et une bonne commande à retenir c'est ```gatsby clean``` qui m'a sauvé pas mal de galère (ou pas).
+
+## Les “core concept”
+
+Dans l’idée, quand on s’entraine à pratiquer on retient l’essentiel que je classe dans la case **Core Concept**. C’est mieux de les retenir pour se focaliser sur d’autre problèmes; Avec Gatsby je dirais que le plus important c’est :
+
+* Le fonctionnement du dossier /src :
+    * On a un dossier page qui sera notre gestionnaire de pages du site.
+    * La main page doit toujours s’appeler index.js. Ça interagit avec gatsby.config qui indique que l’url de cette page sera “/”
+    * C’est bien de le savoir car dans notre arborescence, on aura plus ou moins d’*index page* !
+* Le fichier gatsby.config qu’il faut avoir a l’oeil et qu’on doit manuellement mettre à jour pour intégrer ses plugins.
+
+## Les “bon à savoir”
+
+Ici je classe toutes les choses qui m’ont l’air spécifique à gatsby. Par exemple la page gatsby-plugins qui regroupe tous les plugins de gatsby comme son nom l’indique. 
+
+* On peut ajouter le How to install car ici on doit connecter son site à github et à chaque push on va mettre a jour sur le **gatsby cloud**.
+
+## Conclusion
+
+L’utilisation de Gatsby pour faire des sites multipages React vient directement de la page de doc React. Et au final je me rend compte que c’est pratique pour ce type de projet en particulier. Ici j’ai construit mon portfolio. Tous s’est fait assez rapidement donc je recommencerai à l’utiliser à l’avenir. Maintenant je vais me renseigner sur Next.js pour me rendre compte à quoi ça peut servir et ce qui change réellement dans tous ces frameworks de frameworks…

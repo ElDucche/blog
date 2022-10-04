@@ -27,9 +27,9 @@ const Layout = ({ pageTitle, children }) => {
                     <div className='md:w-1/2 w-full mx-auto row-start-3 border-t dark:border-zinc-50/10 border-zinc-900/10'>
                         <div  className='flex justify-around items-center py-2'> 
                             <p className='font-extralight'>ElDucche's Portfolio.</p>
-                            <a href='https://github.com/ElDucche'><AiFillGithub aria-label='GitHub' size={30}/></a>
-                            <a href='https://twitter.com/ElDucche'><AiOutlineTwitter aria-label='Twitter' size={30}/></a>
-                            <a href='https://www.linkedin.com/in/guillaume-leduc-731a10b4/'><AiFillLinkedin aria-label='Linkedin'size={30}/></a>
+                            <a href='https://github.com/ElDucche' className='hover:scale-105'><AiFillGithub aria-label='GitHub' size={30}/></a>
+                            <a href='https://twitter.com/ElDucche' className='hover:scale-105'><AiOutlineTwitter aria-label='Twitter' size={30}/></a>
+                            <a href='https://www.linkedin.com/in/guillaume-leduc-731a10b4/' className='hover:scale-105'><AiFillLinkedin aria-label='Linkedin'size={30}/></a>
                         </div>
                     </div>
             </div>
