@@ -6,12 +6,28 @@
 
 @layer base {
     *{
-        font-family : 'Abyssinica SIL', 'sans-serif';
-    } 
+        font-family : 'Abyssinica SIL', 'serif';
+    }
+    body {
+        @apply text-zinc-900 dark:text-zinc-50 bg-zinc-200 dark:bg-zinc-900
+    }
 }
 
 @layer components {
     .layout-link {
-        @apply p-2 m-3 hover:border-b-2 hover:border-b-stone-900 dark:hover:border-b-stone-50 text-xl font-medium duration-100 ease-in;
+        @apply p-2 m-3 hover:border-b-2 hover:border-b-zinc-900 dark:hover:border-b-zinc-50 text-xl font-medium duration-100 ease-in;
+    }
+
+    .blogContent > * {
+        @apply w-96 text-justify md:w-[32rem] mx-auto pb-2
+    }
+    .blogContent > h2 {
+        @apply text-2xl font-medium underline underline-offset-4 decoration-zinc-400 decoration-4 capitalize
+    }
+    .blogContent > p {
+        @apply first-letter:text-xl first-letter:font-bold first-letter:text-zinc-700 dark:first-letter:text-zinc-200 first-letter:ml-4
+    }
+    .blogContent > ul {
+        @apply pl-3 marker:text-zinc-700 list-disc dark:marker:text-zinc-400
     }
 }

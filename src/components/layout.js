@@ -1,8 +1,9 @@
 import * as React from 'react'
 import Nav from './Nav'
+import {AiFillGithub, AiOutlineTwitter, AiFillLinkedin} from 'react-icons/ai';
 
 
-const Layout = ({ pageTitle, children, image }) => {
+const Layout = ({ pageTitle, children }) => {
     /*const data = useStaticQuery(graphql`
     query {
         site {
@@ -12,15 +13,23 @@ const Layout = ({ pageTitle, children, image }) => {
         }
     }`)*/
   return (
-    <div className='text-stone-900 dark:text-stone-50 bg-gradient-to-bl from-stone-50 to-stone-300 dark:from-stone-900 dark:to-stone-600'>
+    <div className='min-h-screen'>
         <Nav />
         <div className='p-0 m-0'>
-            <div className='relative top-24'>
-                <h1 className='text-6xl font-bold w-full text-center underline underline-offset-8'>{pageTitle}</h1>
-            </div>
-            <div className='mt-6'>
-                {children}
-            </div>
+                <div className='relative top-24'>
+                    <h1 className='text-6xl font-bold w-full text-center underline decoration-2 underline-offset-8'>{pageTitle}</h1>
+                </div>
+                <div className=''>
+                    {children}
+                </div>
+                <div className='w-1/2 mx-auto relative bottom-0 border-t dark:border-zinc-50/10 border-zinc-900/10'>
+                    <div  className='flex justify-around items-center py-2'> 
+                        <p>@ElDucche's Portfolio.</p>
+                        <a href='https://github.com/ElDucche'><AiFillGithub aria-label='GitHub' size={30}/></a>
+                        <a href='https://twitter.com/ElDucche'><AiOutlineTwitter aria-label='Twitter' size={30}/></a>
+                        <a href='https://www.linkedin.com/in/guillaume-leduc-731a10b4/'><AiFillLinkedin aria-label='Linkedin'size={30}/></a>
+                    </div>
+                </div>
         </div>
     </div>
   )

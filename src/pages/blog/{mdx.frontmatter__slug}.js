@@ -3,11 +3,15 @@ import { graphql } from 'gatsby'
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
 
-const BlogPost = (data, children) => {
+const BlogPost = ({data, children}) => {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
-      <p>{data.mdx.frontmatter.date}</p>
-      {children}
+      <div className=''>
+        <p className='text-lg text-stone-400 dark:text-stone-500 ml-2'>{data.mdx.frontmatter.date}</p>
+        <div className='blogContent'>
+          {children}
+        </div>
+      </div>
     </Layout>
   )
 }
