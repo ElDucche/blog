@@ -1,7 +1,148 @@
 ---
-title: "Yet Another Post"
-date: "2022-09-27"
-slug: "yet-another-post"
+title: "Tailwind, React et le Dark mode"
+date: "2022-10-06"
+slug: "tailwind-react-darkmode"
 ---
+## La base
 
-Wow look at all this content. How do they do it?
+Pour activer le dark mode sur tailwind il y a deux méthodes : le media et la classe. Mais avant de rentrer dans les détails, parlons de tailwind.
+
+Je suis tombé amoureux de ce frameworks CSS car il est d’une simplicité incroyable. À première vu ça semble incompréhensible d’écrire du html avec des classes a rallonge type `class=" w-80 flex justify-center items-center border rounded-lg bg-slate-400 text-slate-50"` mais rien qu’en lisant ça vous avez surement du vous imaginer les effets possibles. Et le mieux c’est quand on rentre dans les interactions  
+
+On entre alors sur de la simplicité pur : `class=" text-black bg-white hover:text-white hover:bg-white"`. Et il en va de même avec le darkmode ou il nous suffit de spécifier `dark:text-white dark:bg-black`.
+
+## Dark Mode
+
+Maintenant, selon la doc tailwind, pour implémenter ce fameux thème sombre on peut indiquer dans notre tailwind.config.js comment va être gérer notre *pseudo-classe* `dark:` : 
+
+### Le mode ‘media’
+
+```json
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'media', // <= Ici en media
+  content: [
+    "./src/pages/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Je ne l’ai pas encore utiliser et pourtant je devrais peut être car au final c’est notre site qui va récupérer l’info pour savoir sous quel thème se situe l’utilisateur. C’est comme le mode système pour notre site. On à juste à dire à tailwind de s’adapter à la configuration de l’utilisateur.
+
+### Le mode ‘class’
+
+```json
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class', // <= Ici en class
+  content: [
+    "./src/pages/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+C’est là que ça devient plus tricky. Car on indique que tailwind doit regarder si la balise html du site a la classe ‘dark’. On va adapter le code qui est fourni dans la doc tailwind :
+
+```jsx
+// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.add('dark') 
+} else {
+  document.documentElement.classList.remove('dark')
+}
+
+// Whenever the user explicitly chooses light mode :  Quand notre user clique sur le petit soleil 
+localStorage.theme = 'light'
+
+// Whenever the user explicitly chooses dark mode :  et la quand il clique sur la lune
+localStorage.theme = 'dark'
+
+// Whenever the user explicitly chooses to respect the OS preference
+localStorage.removeItem('theme')
+```
+
+Jusqu’ici rien de très compliqué, on crée un bouton avec un soleil ou lune qui vont changer à chaque clique et ajouter ou supprimer la classe ‘dark’ à notre balise html. Et je me suis dis que j’allais jouer avec ça sur chacun de mes sites pour ajouter cette touche “pro”. Mais c’était sans faire attention à la logique derrière React…
+
+## React et le darkmode
+
+Et c’est en me confrontant au problème de “j’ai pas de balise html dans mon code” ou encore “mais du coup je mets où mon code tailwind et mon switch ?? 😢.
+
+Alors j’ai fait comme tout professionnel débutant … ⇒ Youtube. Et comme l’astuce marche bien (comme on peut le voir sur ce site), je me suis dit que j’allais en faire un article pour retrouver à chaque fois mon petit raccourci.
+
+### Step 1 : créer un hook.
+
+C’est plutôt cool d’ailleurs car c’est en faisant des recherches sur comment ajouter ce fameux dark mode que je me suis penché un peu plus sur les hooks de React. Je ferais un autre article dessus pour résumer tout ce que j’ai compris. Ici, on doit utiliser deux hooks :
+
+- useState() en lui indiquant light ou dark : `const [theme, setTheme] = useState(checkout);` // Alors oui, checkout c’est parce que si je me base sur le localStorage de mon user pour définir le premier state ça m’affiche une erreur SSR dans mon serveur local car l’élément `window` n’est pas défini. Donc j’ajoute une constante `const checkout = typeof window !== 'undefined' ? localStorage.getItem('theme') : 'dark'` et je lui dit ⇒ soit window est défini donc on prend le theme du user soit par défaut on affiche le theme dark.
+- useEffect() car on va mettre à jour le DOM à chaque fois que notre useState() change. C’est-à-dire ajouter ou enlever la class “dark” à notre balise html.
+
+```jsx
+import { useState } from "react";
+import { useEffect } from "react";
+
+export default function useDarkMode() {
+    const checkout = typeof window !== 'undefined' ? localStorage.getItem('theme') : 'dark'
+    const [theme, setTheme] = useState(checkout);
+    const colorTheme = theme === 'dark' ? 'light' : 'dark';
+    useEffect(() => {
+        const html = document.documentElement;
+
+        html.classList.remove(colorTheme);
+        html.classList.add(theme);  
+        localStorage.setItem("theme", theme);
+    }, [theme, colorTheme])
+
+    return [colorTheme, setTheme];
+}
+```
+
+### Step 2 : Créer notre bouton
+
+```jsx
+import * as React from 'react'
+// import { useEffect } from 'react'
+import useDarkMode from '../hook/useDarkMode'
+
+export default function ThemeToggle() {
+    const [colorTheme, setTheme] = useDarkMode();
+
+    return (
+        <div>
+            <button onClick={() => setTheme(colorTheme)} className="transition duration-500">
+                {
+                    colorTheme === 'light' 
+                    
+                    ? 
+                    // Ce qui va s'afficher en Dark
+                    (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                    </svg>)
+
+                    :
+                    // Ce qui va s'afficher en light mode
+                    (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 rotate-[225deg]">
+                        <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clipRule="evenodd" />
+                    </svg> )
+                }
+            </button>
+            
+        </div>
+    )
+}
+```
+
+Ici c’est plus simple. On appelle notre hook et en fonction de ce que renvoie colorTheme on affiche un soleil ou une lune. Quand on appuie sur le bouton on dit à setTheme de changer en fonction de la valeur précédente de colorTheme.
+
+## Conclusion
+
+Voilà ma version du toggle Dark Mode avec tailwind et React. Simple et réutilisable, j’essaierai de l’adapter avec un vrai bouton switch qui est disponible dans le package @headlessui des créateurs de tailwind.
