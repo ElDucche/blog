@@ -19,10 +19,13 @@
     }
 
     .blogContent > * {
-        @apply w-96 text-justify md:w-[32rem] mx-auto pb-2
+        @apply w-96 text-justify md:w-[32rem] lg:w-[40rem] xl:w-[48rem] mx-auto pb-2 box-border
     }
     .blogContent > h2 {
         @apply text-2xl font-medium underline underline-offset-4 decoration-gray-400 decoration-4 capitalize
+    }
+    .blogContent > h3 {
+        @apply text-xl font-medium underline underline-offset-2 decoration-gray-400 decoration-2 capitalize
     }
     .blogContent > p {
         @apply first-letter:text-xl first-letter:font-bold first-letter:text-gray-700 dark:first-letter:text-gray-200 first-letter:ml-4
@@ -31,6 +34,27 @@
         @apply pl-3 marker:text-gray-700 list-disc dark:marker:text-gray-400
     }
     .blogContent > p > code {
-        @apply px-1 bg-black text-white dark:bg-white dark:text-black
+        @apply px-1 bg-gray-700 text-gray-400 dark:bg-gray-400 dark:text-gray-700 text-sm font-extralight
     }
+    .blogContent > pre {
+        @apply border-t border-b border-gray-900/40 dark:border-gray-100/40 text-xs bg-gray-300 text-gray-600 dark:bg-gray-600 dark:text-gray-300 p-2 overflow-x-auto my-2
+    }
+
+    .scrollHidden {
+        opacity : 0;
+        filter: blur(5px);
+        transform: translateX(-30%);
+        transition: all 1s;
+    }
+
+    .show {
+        opacity : 1;
+        filter: blur(0);
+        transform: translateX(0);
+        transition-delay: 200ms;
+    }
+
+    .footer
+
+
 }
