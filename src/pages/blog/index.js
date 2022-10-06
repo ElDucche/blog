@@ -10,9 +10,9 @@ const BlogPage = ({data}) => {
                     {
                         data.allMdx.nodes.map((node) => (
                         <Link to={`/blog/${node.frontmatter.slug}`}>
-                          <article key={node.id} className="m-4 p-4 md:w-96 w-80 mx-auto bg-stone-100 dark:bg-stone-700 rounded border border-stone-900 dark:border-stone-50 dark:hover:shadow-[3px_3px_0_1px_rgba(255,255,255,0.3)] hover:shadow-[3px_3px_0_1px_rgba(0,0,0,0.2)] hover:scale-105 transition-all duration-200">
+                          <article key={node.id} className="m-4 p-4 md:w-96 w-80 mx-auto bg-gray-100 dark:bg-gray-700 rounded border border-gray-900 dark:border-gray-50 dark:hover:shadow-[3px_3px_0_1px_rgba(255,255,255,0.3)] hover:shadow-[3px_3px_0_1px_rgba(0,0,0,0.2)] hover:scale-105 transition-all duration-200">
                               <h2 className='text-3xl font-semibold'>{node.frontmatter.title}</h2>
-                              <p className='text-stone-400 font-light text-xs'>Posted: {node.frontmatter.date}</p>
+                              <p className='text-gray-400 font-light text-xs'>Posted: {node.frontmatter.date}</p>
                               <p>{node.excerpt}</p>
                           </article>
                         </Link>

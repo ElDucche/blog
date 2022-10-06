@@ -7,7 +7,7 @@ const BlogPost = ({data, children}) => {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <div className=''>
-        <p className='text-lg text-stone-400 dark:text-stone-500 ml-2'>{data.mdx.frontmatter.date}</p>
+        <p className='text-lg text-gray-400 dark:text-gray-500 ml-2'>{data.mdx.frontmatter.date}</p>
         <div className='blogContent'>
           {children}
         </div>

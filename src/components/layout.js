@@ -24,7 +24,7 @@ const Layout = ({ pageTitle, children }) => {
                     <div className=''>
                         {children}
                     </div>
-                    <div className='md:w-1/2 w-full mx-auto row-start-3 border-t dark:border-zinc-50/10 border-zinc-900/10'>
+                    <div className='md:w-1/2 w-full mx-auto border-t dark:border-gray-50/10 border-gray-900/10'>
                         <div  className='flex justify-around items-center py-2'> 
                             <p className='font-extralight'>ElDucche's Portfolio.</p>
                             <a href='https://github.com/ElDucche' className='hover:scale-105'><AiFillGithub aria-label='GitHub' size={30}/></a>
