@@ -1,0 +1,62 @@
+---
+title: "Animation au scroll"
+date: "2022-10-07"
+slug: "animation-scroll"
+---
+
+## Dans la catégorie “Tips”
+
+Plus j’avance et plus je comprends l’utilités des hooks ! Ici on va utiliser useEffect() car on a besoin d’interagir avec le DOM et donc de mettre à jour ce dernier à chaque fois que notre item va apparaitre à l’écran.
+
+## Le code
+
+### JS
+
+Comme c’est un hook que j’aimerai voir fonctionner sur tout le site, je l’applique à mon Components “Layout” (cf le tutoriel Gatsby).  C’est un composant global que j’utilise sur chacune de mes pages.
+
+```jsx
+useEffect(() => {
+// On crée un 'observer" qui prend en arguments tous les objets qu'il va croiser et les appeler 'entries'
+    const observer = new IntersectionObserver((entries) => {
+        // Pour chacune d'elle on va voir si elle est a l'intersection du point de vue ou non :
+        entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting) {
+                // Dans ce cas on lui applique la classe show.
+                entry.target.classList.add('show');
+            }
+        });
+    });
+
+    // on selectionne tous les objets ayant la classe hidden.
+    const hiddenElements = document.querySelectorAll(".scrollHidden");
+    // On applique notre observer a tous les hidden elements et on observe chacun d'entre eux.
+    hiddenElements.forEach((el) => observer.observe(el));
+});
+```
+
+J’ai suivi le tutoriel très bien fait de FireShip. Ici on va utiliser la classe IntersectionObserver(). Très basiquement on va ajouter la classe “show” à chaque fois que l’élément est **vu**. On applique ensuite la classe “scrollHidden” à chaque élément que j’ai envie de faire disparaitre. 
+
+### CSS
+
+Maintenant on applique les propriété CSS qui vont : faire disparaitre mon élément (scrollHidden) ; le faire réapparaitre (show) :
+
+```css
+.scrollHidden {
+        opacity : 0;
+        filter: blur(5px);
+        transform: translateX(-30%);
+        transition: all 1s;
+}
+
+.show {
+    opacity : 1;
+    filter: blur(0);
+    transform: translateX(0);
+    transition-delay: 200ms;
+}
+```
+
+## Conclusion
+
+Du code à copier/coller. Pour améliorer ça on pourrait créer un composant JSX qui s’intitulerait "ScrollAnime" qui agirait comme une div avec les propriétés cités plus haut. Ce composant prendrai alors en paramètre différentes option d’apparitions déjà définies. J’essaierai de créer ce composant et de le mettre à dispo sur mon github. Affaire à suivre…
