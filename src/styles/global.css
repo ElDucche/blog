@@ -53,4 +53,8 @@
         transform: translateX(0);
         transition-delay: 200ms;
     }
+
+    .footerIcon {
+        @apply hover:scale-125 transition-all duration-150 hover:opacity-50
+    }
 }

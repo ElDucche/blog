@@ -39,9 +39,9 @@ const Layout = ({ pageTitle, children }) => {
                         <div className='md:w-1/2 w-full mx-auto border-t dark:border-gray-50/10 border-gray-900/10 scrollHidden'>
                             <div  className='flex justify-around items-center py-2 scrollHidden footer'> 
                                 <p className='font-extralight'>ElDucche's Portfolio.</p>
-                                <a href='https://github.com/ElDucche' className='hover:scale-105 scrollHidden delay-200'><AiFillGithub aria-label='GitHub' size={30}/></a>
-                                <a href='https://twitter.com/ElDucche' className='hover:scale-105 scrollHidden delay-500'><AiOutlineTwitter aria-label='Twitter' size={30}/></a>
-                                <a href='https://www.linkedin.com/in/guillaume-leduc-731a10b4/' className='hover:scale-105 scrollHidden delay-700'><AiFillLinkedin aria-label='Linkedin'size={30}/></a>
+                                <a href='https://github.com/ElDucche' className='scrollHidden delay-200'><AiFillGithub aria-label='GitHub' size={30} className="footerIcon"/></a>
+                                <a href='https://twitter.com/ElDucche' className='scrollHidden delay-500'><AiOutlineTwitter aria-label='Twitter' size={30} className="footerIcon"/></a>
+                                <a href='https://www.linkedin.com/in/guillaume-leduc-731a10b4/' className='scrollHidden delay-700'><AiFillLinkedin aria-label='Linkedin'size={30} className="footerIcon"/></a>
                             </div>
                         </div>
                 </div>
