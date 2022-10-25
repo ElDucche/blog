@@ -17,10 +17,22 @@ const AboutPage = () => {
       "desc" : "Ayant voulu poursuivre mon parcours professionnel dans l’éducation nationale, je me suis orienté vers un master MEEF. Au sein de cette formation j’ai pu pratiquer le metier d’enseignant dans différentes classes des départements (Cher et Loir-et-Cher)."
     },
     {
+      "title" : "Master Meef",
+      "date" : "Sept 2017 - Aout 2019",
+      "type" : "formation",
+      "desc" : "Espe Centre Val de Loire"
+    },
+    {
       "title" : "Chef de projet Web",
       "date" : "Alternance - Paris - 2015/2016",
       "type" : "work",
       "desc" : "Au sein de la délégation à la communication du ministère de l’éducation nationale. J’étais en charge du processus de validation et de publication du contenu “FAQ” du site [devenirenseignant.gouv.fr](http://devenirenseignant.gouv.fr). Cette expérience etait exigeante. Elle m’a permis de gagner en confiance et de vraiment devenir pro-actif dans mes tâches. La gestion des contenus et les longs processus de validation par la hierarchie ont mis à l’épreuve mes compétences. Le site est sorti à temps, proposait tous les services et répondait à tous les besoins formulés par les panels de testeurs."
+    },
+    {
+      "title" : "Licence pro Management de projet",
+      "date" : "Sept 2015 - Aout 2016",
+      "type" : "formation",
+      "desc" : "Les Gobelins - Paris"
     },
     {
       "title" : "Coordinateur de projet multimédia",
@@ -33,18 +45,6 @@ const AboutPage = () => {
       "date" : "Stage - Blois - 2014 (3 mois)",
       "type" : "work",
       "desc" : "L’objectif du stage était de fixer les connaissances acquise pendant la formation. J’ai migré le site existant sur Wordpress et changé le design de ce dernier pour qu’il corresponde mieux au nouveau logo de la radio. Durant ces 3 mois, j’ai surtout conseillé l’équipe de la radio sur la communication web. J’ai également mis en place des outils nouveaux comme le tracker de musique passé sur la radio (pour retrouvé le titre et l’auteur de la chanson)."
-    },
-    {
-      "title" : "Master Meef",
-      "date" : "Sept 2017 - Aout 2019",
-      "type" : "formation",
-      "desc" : "Espe Centre Val de Loire"
-    },
-    {
-      "title" : "Licence pro Management de projet",
-      "date" : "Sept 2015 - Aout 2016",
-      "type" : "formation",
-      "desc" : "Les Gobelins - Paris"
     },
     {
       "title" : "DUT Services et réseaux de communication",
