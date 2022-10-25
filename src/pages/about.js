@@ -56,10 +56,10 @@ const AboutPage = () => {
 
   return (
     <Layout pageTitle="About Me">
-      <div className='w-96 mx-auto'>
+      <div className='md:w-[28rem] w-80 lg:w-[32rem] mx-auto'>
         {
          data.map(item => (
-          <div className='w-96 p-2 bg-gray-300 my-2 text-gray-700 dark:bg-gray-700 dark:text-gray-300 scrollHidden'>
+          <div className='md:w-[28rem] w-80 lg:w-[32rem] p-2 bg-gray-300 my-2 text-gray-700 dark:bg-gray-700 dark:text-gray-300 scrollHidden'>
           <div className='flex justify-between'>
             <h2 className='font-bold text-2xl underline outline-offset-4 decoration-2'>{item.title}</h2>
             <span>
