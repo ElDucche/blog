@@ -11,12 +11,6 @@ const AboutPage = () => {
       "desc" : "L'expérience la plus enrichissante. Quand on parle à un adolescent en lui demandant de la rigueur et de la discipline, il est important d’être soi-même exemplaire. Aujourd’hui et depuis plus de 3 ans, je travaille avec exigeance ces soft-skills. J’ai véritablement changé mentalement : je sais où je dois aller et comment y parvenir. Je sais tenir mes objectifs et assurer suffisament de recul pour gérer les projets que j’entreprends. J’ai gagné la confiance en moi qu’il me manquait lors des autres postes que j’ai occupé."
     },
     {
-      "title" : "Professeur des écoles",
-      "date" : "Stage - Loir-et-Cher / Cher - 2017/2019",
-      "type" : "work",
-      "desc" : "Ayant voulu poursuivre mon parcours professionnel dans l’éducation nationale, je me suis orienté vers un master MEEF. Au sein de cette formation j’ai pu pratiquer le metier d’enseignant dans différentes classes des départements (Cher et Loir-et-Cher)."
-    },
-    {
       "title" : "Master Meef",
       "date" : "Sept 2017 - Aout 2019",
       "type" : "formation",
